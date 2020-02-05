@@ -39,6 +39,44 @@ class MyApp extends StatelessWidget {
               ],
             ),
             height: 180.0
+            ),
+            Container(
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: RaisedButton(
+                      onPressed: () {},
+                      color: Color.fromRGBO(64, 158, 255, 1),
+                      child: Text(
+                        'this is a primary button',
+                        style: TextStyle(
+                          color: Color.fromRGBO(255, 255, 255, 1)
+                        )
+                      )
+                    )
+                  ),
+                  RaisedButton(
+                    onPressed: () {},
+                    color: Color.fromRGBO(0, 0, 0, 1),
+                    child: Text(
+                      'button',
+                      style: TextStyle(
+                        color: Color.fromRGBO(255, 255, 255, 1)
+                      )
+                    )
+                  ),
+                  RaisedButton(
+                    onPressed: () {},
+                    color: Color.fromRGBO(64, 158, 255, 1),
+                    child: Text(
+                      'primary button',
+                      style: TextStyle(
+                        color: Color.fromRGBO(255, 255, 255, 1)
+                      )
+                    )
+                  )
+                ],
+              )
             )
           ],
         )
