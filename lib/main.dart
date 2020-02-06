@@ -1,36 +1,35 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp(
-  items: List<String>.generate(25, (i) => 'item $i')
+void main() => runApp(MaterialApp(
+  title: 'demo',
+  home: MyApp()
 ));
 
+String hello = 'hello world';
+
+var stack = Stack(
+  children: <Widget>[
+    CircleAvatar(
+      backgroundImage: NetworkImage('http://newimg.jspang.com/zhishixingqiu.png'),
+      radius: 100.0
+    ),
+    Positioned(
+      top: 100.0,
+      left: 10.0,
+      child: Container(
+        child: Text(hello),
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(255, 0, 0, 1)
+        ),
+        padding: EdgeInsets.all(10.0)
+      )
+    )
+  ],
+);
 class MyApp extends StatelessWidget {
-  final List<String> items;
-  MyApp({Key key, @required this.items}): super(key: key);
   @override
   Widget build(BuildContext context) {
-    var stack = Stack(
-      children: <Widget>[
-        CircleAvatar(
-          backgroundImage: NetworkImage('http://newimg.jspang.com/zhishixingqiu.png'),
-          radius: 100.0
-        ),
-        Positioned(
-          top: 100.0,
-          left: 10.0,
-          child: Container(
-            child: Text('hello world'),
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(255, 0, 0, 1)
-            ),
-            padding: EdgeInsets.all(10.0)
-          )
-        )
-      ],
-    );
-    return MaterialApp(
-      title: 'this is a primary flutter demo',
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text('welcome to flutter demo')
         ),
@@ -65,10 +64,14 @@ class MyApp extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => AnotherPage()
+                        ));
+                      },
                       color: Color.fromRGBO(64, 158, 255, 1),
                       child: Text(
-                        'this is a primary button',
+                        'this is a router button',
                         style: TextStyle(
                           color: Color.fromRGBO(255, 255, 255, 1)
                         )
@@ -76,7 +79,9 @@ class MyApp extends StatelessWidget {
                     )
                   ),
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      hello = 'hhh';
+                    },
                     color: Color.fromRGBO(0, 0, 0, 1),
                     child: Text(
                       'button',
@@ -86,7 +91,9 @@ class MyApp extends StatelessWidget {
                     )
                   ),
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      hello = 'well';
+                    },
                     color: Color.fromRGBO(64, 158, 255, 1),
                     child: Text(
                       'primary button',
@@ -132,7 +139,6 @@ class MyApp extends StatelessWidget {
             )
           ],
         )
-      )
     );
   }
 }
@@ -164,5 +170,23 @@ class MyList extends StatelessWidget {
       ),
       height: 180.0
     );
+  }
+}
+
+class AnotherPage extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar:AppBar(title:Text('技术胖商品详情页')),
+      body:Center(
+        child:RaisedButton(
+          child:Text('返回'),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        )
+      )
+    );
+
   }
 }
