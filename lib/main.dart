@@ -20,6 +20,13 @@ class Commodity {
 class ProductList extends StatelessWidget {
   final List<Commodity> productList;
   ProductList({ Key key, @required this.productList }): super(key: key);
+  _getRouterMessage(BuildContext context, index) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CommodityPage(commodity: productList[index]))
+    );
+    Scaffold.of(context).showSnackBar(SnackBar(content: Text('$result')));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,12 +39,7 @@ class ProductList extends StatelessWidget {
           return ListTile(
             title: Text(productList[index].name),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CommodityPage(commodity: productList[index])
-                )
-              );
+              _getRouterMessage(context, index);
             },
           );
         },
@@ -56,7 +58,12 @@ class CommodityPage extends StatelessWidget {
         title: Text('${commodity.name}')
       ),
       body: Center(
-        child: Text('${commodity.brief}')
+        child: RaisedButton(
+          child: Text('${commodity.brief}, click me to return'),
+          onPressed: () {
+            Navigator.pop(context, '${commodity.name} is selected');
+          },
+        )
       )
     );
   }
