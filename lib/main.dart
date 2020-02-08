@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
-  title: 'demo',
-  home: MyApp()
-));
+void main() {
+  runApp(MaterialApp(
+    title: 'demo',
+    home: MyApp()
+  ));
+  dynamic hello = 5;
+  hello = 'hello world';
+  print(hello);
+}
 
 String hello = 'hello world';
 
