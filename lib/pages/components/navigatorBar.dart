@@ -7,15 +7,29 @@ class NavigatorBar extends StatelessWidget {
     return Container(
       child: Row(
         children: <Widget>[
-          Icon(
+          Container(
+            child: Icon(
             CustomizeIcon.scan,
             size: 40,
             color: Colors.black
+            ),
           ),
           SearchCommodity(),
-          Image.asset('lib/assets/imgs/envelope.png')
+          Container(
+            child: CircleAvatar(
+            backgroundImage: AssetImage('lib/assets/imgs/envelope.png')
+            ),
+            width: 30.0,
+            height: 30.0,
+            margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+          ),
+          Icon(
+            CustomizeIcon.wangwang,
+            size: 35,
+            color: Color(0xff4989e2)
+          )
         ],
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center
       ),
       margin: EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 0.0),
       padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
@@ -34,8 +48,8 @@ class SearchCommodity extends StatelessWidget{
           hintText: "请输入你要购买的商品",
           border: OutlineInputBorder(
             borderSide: BorderSide(
-              width: 3.0,
-              color: Colors.orange,
+              width: 30.0,
+              color: Color(0xfff9800),
             ),
             borderRadius: BorderRadius.circular(40.0)
           ),
@@ -51,8 +65,9 @@ class SearchCommodity extends StatelessWidget{
           print(value);
         },
       ),
-      width: 300.0,
+      width: 260.0,
       height: 40.0,
+      margin: EdgeInsets.fromLTRB(5.0, 0, 10.0, 0),
     );
   }
 }

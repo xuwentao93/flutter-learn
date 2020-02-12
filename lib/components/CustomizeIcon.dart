@@ -13,4 +13,6 @@ class CustomizeIcon {
   static const IconData group = IconData(0xe6df, fontFamily: 'MyIcons');
   static const IconData search = IconData(0xe6e1, fontFamily: 'MyIcons');
   static const IconData follow = IconData(0xe8b1, fontFamily: 'MyIcons');
+  static const IconData wangwang = IconData(0xe8c6, fontFamily: 'MyIcons');
+
 }
